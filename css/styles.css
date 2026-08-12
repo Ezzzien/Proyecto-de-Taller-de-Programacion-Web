@@ -1,0 +1,4 @@
+/* Importación de módulos CSS */
+@import url('variables.css'); /* Variables (colores, fuentes) */
+@import url('base.css');      /* Estilos base y reset */
+@import url('components.css');/* Componentes */
