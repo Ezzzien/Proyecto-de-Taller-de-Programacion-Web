@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin ATR</title>
+</head>
+<body>
+   <header>
+       <img src="informacion-del-proyecto/Imagenes/LOGO ATR.jpg" alt="LOGO ATR" width="150" height="150">
+        <h1>Panel de Administrador Brosteria ATR</h1>
+    </header>
+        <section id="login-admin">
+            <form action="login_admin.php" method="POST">
+                <fieldset>
+                    <legend>Panel de Administrador</legend>
+                    
+                    <label for="usuario_admin">Usuario o ID:</label>
+                    <input type="text" id="usuario_admin" name="usuario_admin" required placeholder="Ej. ADMIN-01">
+                    
+                    <label for="pass_admin">Contraseña:</label>
+                    <input type="password" id="pass_admin" name="pass_admin" required placeholder="Ingresa tu contraseña">
+                    
+                    <button type="submit">Acceder al Sistema</button>
+                </fieldset>
+            </form>
+        </section>    
+</body>
+</html>

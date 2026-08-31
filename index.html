@@ -10,19 +10,33 @@
 
 <body>
     <header>
-        <h1>Brosteria ATR</h1>
+       <img src="informacion-del-proyecto/Imagenes/LOGO ATR.jpg" alt="LOGO ATR" width="150" height="150">
     </header>
+    
     <nav>
-
-    </nav>
+        </nav>
     <main>
         <h2>Bienvenido a Brosteria ATR</h2>
         <p>Disfruta de nuestras deliciosas brosterias y acompáñalas con nuestras bebidas refrescantes.</p>
-        <h2>Menú</h2>
-    </main>
-    <footer>
+        
+       <section id="login-cliente">
+            <form action="login_cliente.php" method="POST">
+                <fieldset>
+                    <legend>Acceso de Clientes</legend>
+                    
+                    <label for="celular_cliente">Número de Celular:</label>
+                    <input type="tel" id="celular_cliente" name="celular_cliente" required placeholder="Ej. 999111222" maxlength="20">
+                    
+                    <button type="submit">Ingresar</button>
+                </fieldset>
+            </form>
+        </section>
 
-    </footer>
+
+        <h2>Menú</h2>
+        </main>
+    <footer>
+        </footer>
 
     <script src="js/script.js"></script>
 </body>
