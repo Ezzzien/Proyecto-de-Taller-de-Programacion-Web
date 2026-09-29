@@ -1,5 +1,5 @@
 # Proyecto - Taller de Programación Web
-[Atracciones Chancay](https://netlify.app)
+[Atracciones Chancay](https://atrchancay.netlify.app/)
 
 ----------------------------------------------------------------------
 CABRERA VALENCIA ESIEN GABRIEL
