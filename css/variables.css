@@ -1,1 +1,11 @@
 /* Variables de diseño (colores, fuentes, etc.) */
+:root {
+    --color-primario: #B22222;
+    /* rojo terracota del pollo broaster */
+    --color-secundario: #F2A900;
+    /* amarillo dorado de las papas       */
+    --color-fondo: #FAF7F2;
+    /* blanco hueso                       */
+    --color-texto: #2B2B2B;
+    /* gris oscuro para cuerpo            */
+}

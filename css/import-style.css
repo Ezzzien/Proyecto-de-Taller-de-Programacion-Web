@@ -1,0 +1,4 @@
+/* Importación de módulos CSS */
+@import url('variables.css'); 
+@import url('base.css');     
+@import url('components.css');

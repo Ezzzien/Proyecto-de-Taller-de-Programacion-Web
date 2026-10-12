@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATR Brostería Chancay | Contacto</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="logo">
+            <img src="/assets/img/logo-atr.jpg" alt="Logo ATR Brostería" width="60">
+            <h1>ATR Brostería</h1>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li><a href="carta.html">Carta</a></li>
+                <li><a href="promociones.html">Promociones</a></li>
+                <li><a href="contacto.html" class="activo">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="formulario-contacto">
+            <h2>Contáctanos</h2>
+            <p>¿Tienes alguna consulta o deseas hacer un pedido?
+                Escríbenos y te responderemos a la brevedad.</p>
+
+            <form action="#" method="post" class="form-contacto">
+                <div class="campo">
+                    <label for="nombre">Nombre completo *</label>
+                    <input type="text" id="nombre" name="nombre" placeholder="Ej. María Pérez" required>
+                </div>
+
+                <div class="campo">
+                    <label for="correo">Correo electrónico *</label>
+                    <input type="email" id="correo" name="correo" placeholder="Ej. maria@gmail.com" required>
+                </div>
+
+                <div class="campo">
+                    <label for="telefono">Teléfono</label>
+                    <input type="tel" id="telefono" name="telefono" placeholder="Ej. 999 888 777">
+                </div>
+
+                <div class="campo">
+                    <label for="asunto">Asunto *</label>
+                    <select id="asunto" name="asunto" required>
+                        <option value="">-- Seleccione --</option>
+                        <option value="pedido">Pedido</option>
+                        <option value="reserva">Reserva</option>
+                        <option value="consulta">Consulta general</option>
+                    </select>
+                </div>
+
+                <div class="campo">
+                    <label for="mensaje">Mensaje *</label>
+                    <textarea id="mensaje" name="mensaje" rows="5" placeholder="Escriba su mensaje aquí..."
+                        required></textarea>
+                </div>
+
+                <button type="submit" class="btn-enviar">Enviar mensaje</button>
+            </form>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 ATR Brostería — Chancay, Huaral, Lima.</p>
+        <p>Tel. 999 888 777 | Av. Pacífico 245, Chancay</p>
+    </footer>
+</body>
+
+</html>
