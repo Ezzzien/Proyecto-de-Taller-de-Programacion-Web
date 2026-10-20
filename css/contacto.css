@@ -1,0 +1,202 @@
+/* Estilos de la página de contacto */
+
+
+/* Estructura principal */
+.contacto-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+/* Sidebar */
+@media (min-width: 1024px) {
+  .contacto-grid { grid-template-columns: 1.6fr 1fr; }
+}
+
+/* Cotizador */
+.cotizador {
+  margin-top: 2rem;
+  padding: 1.4rem;
+  border-radius: var(--radio);
+  background-color: var(--color-crema);
+  border: 2px dashed #F0C24B;
+}
+
+.cotizador h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.4rem;
+}
+
+.cotizador h3 i { color: var(--color-acento); }
+
+.cotizador p {
+  font-size: 0.92rem;
+  color: var(--color-gris);
+  margin-bottom: 0.9rem;
+}
+
+.resultado-cotizador {
+  margin-top: 0.9rem;
+  padding: 0.9rem 1.1rem;
+  border-radius: 8px;
+  background-color: #E8F5E9;
+  border-left: 5px solid var(--color-exito);
+  color: #1B5E20;
+  font-size: 0.95rem;
+}
+
+.resultado-cotizador strong {
+  font-family: var(--fuente-titulos);
+}
+
+/* Barra lateral */
+.contacto-sidebar {
+  display: grid;
+  gap: 1.2rem;
+}
+
+.tarjeta-info {
+  padding: 1.2rem 1.3rem;
+}
+
+.tarjeta-info h3 {
+  font-size: 1.02rem;
+  margin-bottom: 0.6rem;
+}
+
+.tarjeta-info h3 i {
+  color: var(--color-acento);
+  margin-right: 0.35rem;
+}
+
+.tarjeta-info p {
+  font-size: 0.92rem;
+  color: #37474F;
+}
+
+.tarjeta-info .referencia {
+  margin-top: 0.5rem;
+  font-size: 0.84rem;
+  color: var(--color-gris);
+  font-style: italic;
+}
+
+.tarjeta-info .badge { margin-top: 0.7rem; }
+
+/* Tabla de horarios compacta del sidebar */
+.tabla-horarios {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+
+.tabla-horarios thead {
+  background-color: var(--color-primario);
+  color: #FFFFFF;
+}
+
+.tabla-horarios th,
+.tabla-horarios td {
+  padding: 0.5rem 0.7rem;
+  border-bottom: 1px solid var(--color-borde);
+  text-align: left;
+}
+
+.tabla-horarios tbody tr:nth-child(even) { background-color: var(--color-crema); }
+
+/* Mapa */
+.mapa-grande iframe {
+  width: 100%;
+  height: 360px;
+  border: 0;
+  border-radius: var(--radio);
+  box-shadow: var(--sombra-tarjeta);
+}
+
+@media (min-width: 768px) {
+  .mapa-grande iframe { height: 460px; }
+}
+
+/* Preguntas frecuentes */
+.contenedor-faq { max-width: 860px; }
+
+.faq-lista {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.faq-item {
+  background-color: #FFFFFF;
+  border-radius: var(--radio);
+  box-shadow: var(--sombra-tarjeta);
+  overflow: hidden;
+}
+
+.faq-pregunta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  padding: 1rem 1.2rem;
+  border: none;
+  background-color: transparent;
+  font-family: var(--fuente-titulos);
+  font-weight: 600;
+  font-size: 0.98rem;
+  color: var(--color-texto);
+  text-align: left;
+  cursor: pointer;
+  transition: background-color var(--transicion), color var(--transicion);
+}
+
+.faq-pregunta:hover { background-color: var(--color-crema); }
+
+.faq-pregunta i.fa-circle-question {
+  color: var(--color-acento);
+  margin-right: 0.5rem;
+}
+
+.faq-pregunta .flecha {
+  transition: transform 0.3s ease;
+  color: var(--color-primario);
+}
+
+.faq-pregunta[aria-expanded="true"] .flecha {
+  transform: rotate(180deg);
+}
+
+.faq-respuesta {
+  padding: 0 1.2rem 1.1rem;
+  animation: desplegarFaq 0.3s ease;
+}
+
+.faq-respuesta p {
+  font-size: 0.93rem;
+  color: var(--color-gris);
+}
+
+@keyframes desplegarFaq {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Checkbox de políticas */
+.campo-politicas .opcion-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  font-size: 0.9rem;
+  color: var(--color-texto);
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.campo-politicas .opcion-check input {
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  accent-color: var(--color-acento);
+  cursor: pointer;
+}

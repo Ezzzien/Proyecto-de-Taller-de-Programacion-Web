@@ -1,0 +1,241 @@
+/* Estilos de promociones */
+
+
+/* Tarjeta destacada de hoy */
+#promo-destacada-hoy .tarjeta-promo-dia {
+  display: grid;
+  grid-template-columns: 1fr;
+  overflow: hidden;
+  border-radius: var(--radio);
+  background-color: #FFFFFF;
+  box-shadow: var(--sombra-elevada);
+  max-width: 880px;
+  margin: 0 auto;
+  animation: aparecerArriba 0.6s ease both;
+}
+
+@media (min-width: 768px) {
+  #promo-destacada-hoy .tarjeta-promo-dia { grid-template-columns: 1fr 1.2fr; }
+}
+
+#promo-destacada-hoy img {
+  width: 100%;
+  height: 100%;
+  min-height: 240px;
+  object-fit: cover;
+}
+
+/* Cuerpo de la tarjeta destacada (mismas clases que en inicio) */
+.promo-dia-cuerpo {
+  padding: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  justify-content: center;
+}
+
+.promo-dia-cuerpo .etiqueta-dia {
+  color: var(--color-acento);
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.promo-dia-cuerpo .etiqueta-dia i { margin-right: 0.35rem; }
+
+.promo-dia-cuerpo h3 {
+  font-size: 1.5rem;
+}
+
+.promo-precios {
+  display: flex;
+  align-items: baseline;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+}
+
+.promo-precios .precio-nuevo {
+  font-family: var(--fuente-titulos);
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--color-primario);
+}
+
+.promo-precios .precio-viejo {
+  font-size: 1.05rem;
+  color: var(--color-gris);
+  text-decoration: line-through;
+}
+
+.promo-dia-cuerpo p.desc {
+  color: var(--color-gris);
+  font-size: 0.95rem;
+}
+
+.promo-dia-cuerpo .horario {
+  font-size: 0.88rem;
+  color: var(--color-texto);
+}
+
+.promo-dia-cuerpo .horario i {
+  color: var(--color-acento);
+  margin-right: 0.3rem;
+}
+
+/* Lista de promociones */
+.grid-promociones {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .grid-promociones { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1280px) {
+  .grid-promociones { grid-template-columns: repeat(3, 1fr); }
+}
+
+.tarjeta-promo {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: #FFFFFF;
+  border-radius: var(--radio);
+  box-shadow: var(--sombra-tarjeta);
+  overflow: hidden;
+  transition: transform var(--transicion), box-shadow var(--transicion);
+}
+
+.tarjeta-promo:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: var(--sombra-elevada);
+}
+
+.tarjeta-promo img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.tarjeta-promo:hover img { transform: scale(1.06); }
+
+.tarjeta-promo .dia-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--color-primario), var(--color-acento));
+  color: #FFFFFF;
+  font-family: var(--fuente-titulos);
+  font-weight: 700;
+  font-size: 0.82rem;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Resplandor especial para la promo del día actual */
+.tarjeta-promo.promo-hoy {
+  outline: 3px solid var(--color-acento);
+  outline-offset: 2px;
+}
+
+.tarjeta-promo .hoy-cinta {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+  background-color: var(--color-exito);
+  color: #FFFFFF;
+  font-size: 0.8rem;
+  font-weight: 700;
+  animation: latido 1.6s ease infinite;
+}
+
+.promo-cuerpo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.2rem;
+  flex: 1;
+}
+
+.promo-cuerpo h3 {
+  font-size: 1.2rem;
+}
+
+.promo-cuerpo .promo-desc {
+  font-size: 0.92rem;
+  color: var(--color-gris);
+  flex: 1;
+}
+
+.promo-precios-fila {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+}
+
+.promo-precios-fila .nuevo {
+  font-family: var(--fuente-titulos);
+  font-size: 1.7rem;
+  font-weight: 800;
+  color: var(--color-primario);
+}
+
+.promo-precios-fila .antes {
+  color: var(--color-gris);
+  text-decoration: line-through;
+  font-size: 0.95rem;
+}
+
+.promo-horario {
+  font-size: 0.85rem;
+  color: var(--color-texto);
+}
+
+.promo-horario i { color: var(--color-acento); }
+
+.promo-cuerpo .btn {
+  margin-top: 0.6rem;
+}
+
+/* Nota informativa */
+.nota-promo {
+  margin-top: 1.4rem;
+  padding: 1rem 1.2rem;
+  border-left: 5px solid var(--color-acento);
+  background-color: var(--color-crema);
+  border-radius: 8px;
+  font-size: 0.92rem;
+}
+
+/* Bloque de llamada a la acción */
+.cta-promo {
+  padding: 3.5rem 1rem;
+  background:
+    linear-gradient(rgba(38, 50, 56, 0.85), rgba(38, 50, 56, 0.85)),
+    url("../img/cocina.jpg") center / cover no-repeat;
+}
+
+.cta-promo h2 {
+  color: #FFFFFF;
+  font-size: 1.8rem;
+  margin-bottom: 0.4rem;
+}
+
+.cta-promo p {
+  color: #FFD54F;
+  margin-bottom: 1.4rem;
+}
+
+.cta-promo-botones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  justify-content: center;
+}

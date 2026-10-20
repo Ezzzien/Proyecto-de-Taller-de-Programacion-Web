@@ -1,0 +1,189 @@
+/* Estilos de la carta */
+
+
+.seccion-carta {
+  padding: 2.5rem 0 3.5rem;
+}
+
+/* Filtros de categorías */
+.filtros-categoria {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-bottom: 2rem;
+}
+
+.btn-filtro {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.6rem 1.2rem;
+  border: 2px solid var(--color-primario);
+  border-radius: 999px;
+  background-color: #FFFFFF;
+  color: var(--color-primario);
+  font-family: var(--fuente-titulos);
+  font-weight: 600;
+  font-size: 0.92rem;
+  cursor: pointer;
+  transition: background-color var(--transicion), color var(--transicion),
+              transform var(--transicion);
+}
+
+.btn-filtro:hover {
+  background-color: var(--color-crema);
+  transform: translateY(-2px);
+}
+
+.btn-filtro.activo {
+  background-color: var(--color-primario);
+  color: #FFFFFF;
+}
+
+.btn-filtro .contador {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 5px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  background-color: var(--color-acento);
+  color: #FFFFFF;
+}
+
+/* Mensaje cuando no hay resultados */
+.mensaje-vacio {
+  text-align: center;
+  color: var(--color-gris);
+  padding: 2rem 1rem;
+  font-size: 1.05rem;
+}
+
+/* Modal de detalle del producto */
+.detalle-categoria {
+  margin-bottom: 0.5rem;
+}
+
+.detalle-descripcion {
+  color: var(--color-gris);
+  margin: 0.6rem 0 1rem;
+}
+
+.detalle-datos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.detalle-datos .dato {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.8rem;
+  border-radius: 999px;
+  background-color: var(--color-crema);
+  font-size: 0.85rem;
+  color: var(--color-texto);
+}
+
+.detalle-datos .dato i { color: var(--color-acento); }
+
+.detalle-precio {
+  font-family: var(--fuente-titulos);
+  font-size: 1.9rem;
+  font-weight: 800;
+  color: var(--color-primario);
+  margin: 0.4rem 0 1rem;
+}
+
+/* Personalización de combos */
+.personalizacion {
+  border: 1px dashed var(--color-borde);
+  border-radius: 8px;
+  padding: 0.9rem 1rem;
+  margin-bottom: 1rem;
+  background-color: #FAFAFA;
+}
+
+.personalizacion legend {
+  font-family: var(--fuente-titulos);
+  font-weight: 600;
+  font-size: 0.92rem;
+  padding: 0 0.4rem;
+  color: var(--color-primario);
+}
+
+.opcion-extra {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.4rem;
+  font-size: 0.92rem;
+  cursor: pointer;
+}
+
+.opcion-extra input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--color-acento);
+  cursor: pointer;
+}
+
+.opcion-extra .extra-precio {
+  margin-left: auto;
+  color: var(--color-gris);
+  font-size: 0.85rem;
+}
+
+.detalle-acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+}
+
+.detalle-acciones .btn {
+  flex: 1 1 200px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+/* Producto agotado dentro del modal */
+.estado-agotado {
+  color: var(--color-error);
+  font-weight: 700;
+}
+
+.estado-disponible {
+  color: var(--color-exito);
+  font-weight: 700;
+}
+
+/* Enlace "ver detalle" de cada tarjeta */
+.btn-ver-detalle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 1rem;
+  border: 2px solid var(--color-primario);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--color-primario);
+  font-family: var(--fuente-titulos);
+  font-weight: 600;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: background-color var(--transicion), color var(--transicion),
+              transform var(--transicion);
+}
+
+.btn-ver-detalle:hover {
+  background-color: var(--color-primario);
+  color: #FFFFFF;
+  transform: translateY(-2px);
+}

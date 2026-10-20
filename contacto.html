@@ -1,77 +1,307 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ATR Brostería Chancay | Contacto</title>
-    <link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacto | ATR Brostería - Chancay</title>
+  <meta name="description" content="Contáctate con ATR Brostería en Chancay: envíanos tu consulta, conoce nuestra ubicación, horarios de atención y zona de delivery.">
+  <meta name="author" content="Grupo 4 - Taller de Programación Web UTP">
+  <link rel="icon" type="image/png" href="img/favicon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;1,400&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/contacto.css">
 </head>
-
 <body>
-    <header class="site-header">
-        <div class="logo">
-            <img src="/assets/img/logo-atr.jpg" alt="Logo ATR Brostería" width="60">
-            <h1>ATR Brostería</h1>
+  <a href="#contenido" class="saltar-contenido">Saltar al contenido principal</a>
+
+  <!-- Encabezado -->
+  <header class="site-header">
+    <div class="contenedor barra-header">
+      <a href="index.html" class="logo" aria-label="ATR Brostería - Inicio">
+        <i class="fa-solid fa-drumstick-bite" aria-hidden="true"></i>
+        <span>
+          <span class="logo-nombre">ATR <span>Brostería</span></span><br>
+          <span class="logo-eslogan">Sabor inigualable desde Chancay</span>
+        </span>
+      </a>
+      <button id="btn-hamburguesa" class="btn-hamburguesa" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="main-nav">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="main-nav" class="main-nav" aria-label="Navegación principal">
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="carta.html">Carta</a></li>
+          <li><a href="promociones.html">Promociones</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="galeria.html">Galería</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenido -->
+  <main id="contenido">
+
+    <section class="page-banner">
+      <div>
+        <h1>Contacto</h1>
+        <p>Escríbenos, visítanos o pide a domicilio</p>
+        <p class="breadcrumb"><a href="index.html">Inicio</a> / Contacto</p>
+      </div>
+    </section>
+
+    <section class="seccion" aria-labelledby="titulo-formulario">
+      <div class="contenedor contacto-grid">
+
+        <!-- Formulario -->
+        <div class="contacto-formulario">
+          <h2 id="titulo-formulario" class="titulo-seccion">Envíanos un mensaje</h2>
+          <p class="subtitulo-seccion">
+            Completa el formulario y te responderemos a la brevedad. Todos los campos
+            marcados con <span class="obligatorio">*</span> son obligatorios.
+          </p>
+
+          <!-- Formulario de contacto -->
+          <form id="form-contacto" class="form-contacto" novalidate>
+            <div class="campo">
+              <label for="nombre">Nombre completo <span class="obligatorio">*</span></label>
+              <input type="text" id="nombre" name="nombre" placeholder="Ej.: Juan Pérez" autocomplete="name">
+              <span class="mensaje-error-campo" data-error-para="nombre" aria-live="polite"></span>
+            </div>
+
+            <div class="campo">
+              <label for="email">Correo electrónico <span class="obligatorio">*</span></label>
+              <input type="email" id="email" name="email" placeholder="Ej.: juan@correo.com" autocomplete="email">
+              <span class="mensaje-error-campo" data-error-para="email" aria-live="polite"></span>
+            </div>
+
+            <div class="campo">
+              <label for="telefono">Celular <span class="obligatorio">*</span></label>
+              <input type="tel" id="telefono" name="telefono" placeholder="Ej.: 987654321" inputmode="numeric" autocomplete="tel">
+              <span class="mensaje-error-campo" data-error-para="telefono" aria-live="polite"></span>
+            </div>
+
+            <div class="campo">
+              <label for="tipo">Tipo de consulta <span class="obligatorio">*</span></label>
+              <select id="tipo" name="tipo">
+                <option value="">-- Selecciona una opción --</option>
+                <option value="pedido">Hacer un pedido</option>
+                <option value="delivery">Consultar delivery</option>
+                <option value="promociones">Promociones y combos</option>
+                <option value="felicitacion">Felicitación</option>
+                <option value="reclamo">Reclamo o sugerencia</option>
+              </select>
+              <span class="mensaje-error-campo" data-error-para="tipo" aria-live="polite"></span>
+            </div>
+
+            <div class="campo campo-completo">
+              <label for="mensaje">Mensaje <span class="obligatorio">*</span></label>
+              <textarea id="mensaje" name="mensaje" rows="5" placeholder="Cuéntanos en qué podemos ayudarte..."></textarea>
+              <span class="mensaje-error-campo" data-error-para="mensaje" aria-live="polite"></span>
+            </div>
+
+            <div class="campo campo-completo campo-politicas">
+              <label class="opcion-check">
+                <input type="checkbox" id="politicas" name="politicas">
+                Acepto que ATR Brostería use mis datos para responder esta consulta.
+                <span class="obligatorio">*</span>
+              </label>
+              <span class="mensaje-error-campo" data-error-para="politicas" aria-live="polite"></span>
+            </div>
+
+            <div class="campo-completo">
+              <button type="submit" class="btn btn-primario btn-enviar" id="btn-enviar">
+                <i class="fa-solid fa-paper-plane"></i> Enviar mensaje
+              </button>
+            </div>
+
+            <!-- Alertas -->
+            <div id="alerta-formulario" class="campo-completo" aria-live="assertive"></div>
+          </form>
+
+          <!-- Cotizador rápido -->
+          <div class="cotizador">
+            <h3><i class="fa-solid fa-calculator"></i> ¿No sabes qué pedir?</h3>
+            <p>Usa nuestro cotizador rápido: dime para cuántas personas es tu pedido y te sugiero el combo ideal.</p>
+            <button type="button" id="btn-cotizador" class="btn btn-acento">
+              <i class="fa-solid fa-wand-magic-sparkles"></i> Calcular mi combo ideal
+            </button>
+            <div id="resultado-cotizador" class="resultado-cotizador" aria-live="polite"></div>
+          </div>
         </div>
-        <nav class="main-nav">
-            <ul>
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="nosotros.html">Nosotros</a></li>
-                <li><a href="carta.html">Carta</a></li>
-                <li><a href="promociones.html">Promociones</a></li>
-                <li><a href="contacto.html" class="activo">Contacto</a></li>
+
+        <!-- Información lateral -->
+        <aside class="contacto-sidebar">
+          <div class="tarjeta tarjeta-info">
+            <h3><i class="fa-solid fa-location-dot"></i> Ubicación</h3>
+            <p>Av. Principal 123, Chancay<br>Huaral — Lima — Perú</p>
+            <p class="referencia">A 2 cuadras de la Plaza de Armas de Chancay, frente al parque central.</p>
+          </div>
+
+          <div class="tarjeta tarjeta-info">
+            <h3><i class="fa-solid fa-phone"></i> Teléfonos y redes</h3>
+            <ul class="lista-contacto">
+              <li><i class="fa-solid fa-phone-volume"></i> <a href="tel:+51987654321">+51 987 654 321</a></li>
+              <li><i class="fa-brands fa-whatsapp"></i> <a href="https://wa.me/51987654321" target="_blank" rel="noopener">WhatsApp directo</a></li>
+              <li><i class="fa-solid fa-envelope"></i> <a href="mailto:pedidos@atrbrosteria.pe">pedidos@atrbrosteria.pe</a></li>
             </ul>
-        </nav>
-    </header>
+          </div>
 
-    <main>
-        <section class="formulario-contacto">
-            <h2>Contáctanos</h2>
-            <p>¿Tienes alguna consulta o deseas hacer un pedido?
-                Escríbenos y te responderemos a la brevedad.</p>
+          <div class="tarjeta tarjeta-info">
+            <h3><i class="fa-solid fa-clock"></i> Horarios de atención</h3>
+            <div class="tabla-responsiva">
+              <table class="tabla-horarios">
+                <caption class="oculto">Horarios de atención del local</caption>
+                <thead>
+                  <tr><th scope="col">Días</th><th scope="col">Horario</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>Lunes a viernes</td><td>12:00 pm – 10:00 pm</td></tr>
+                  <tr><td>Sábados y domingos</td><td>12:00 pm – 11:00 pm</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p><span class="badge estado-badge" data-estado-local>Cargando estado...</span></p>
+          </div>
 
-            <form action="#" method="post" class="form-contacto">
-                <div class="campo">
-                    <label for="nombre">Nombre completo *</label>
-                    <input type="text" id="nombre" name="nombre" placeholder="Ej. María Pérez" required>
-                </div>
+          <div class="tarjeta tarjeta-info">
+            <h3><i class="fa-solid fa-motorcycle"></i> Zona de delivery</h3>
+            <p>Cubrimos todo el distrito de Chancay. Pedidos desde S/ 15. Delivery gratis en pedidos desde S/ 40.</p>
+            <p class="referencia">Tiempo estimado de entrega: 30 a 45 minutos.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
 
-                <div class="campo">
-                    <label for="correo">Correo electrónico *</label>
-                    <input type="email" id="correo" name="correo" placeholder="Ej. maria@gmail.com" required>
-                </div>
+    <!-- Mapa -->
+    <section class="seccion seccion-crema" aria-labelledby="titulo-mapa-contacto">
+      <div class="contenedor">
+        <h2 id="titulo-mapa-contacto" class="titulo-seccion centro texto-centro">Encuéntranos en el mapa</h2>
+        <p class="subtitulo-seccion centro" style="margin-left:auto; margin-right:auto;">Estamos en el centro de Chancay. ¡Te esperamos!</p>
+        <div class="mapa-grande">
+          <iframe
+            src="https://www.google.com/maps?q=Plaza%20de%20Armas%20de%20Chancay%2C%20Peru&output=embed"
+            title="Mapa con la ubicación de ATR Brostería en Chancay"
+            loading="lazy"
+            allowfullscreen
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </section>
 
-                <div class="campo">
-                    <label for="telefono">Teléfono</label>
-                    <input type="tel" id="telefono" name="telefono" placeholder="Ej. 999 888 777">
-                </div>
+    <!-- Preguntas frecuentes -->
+    <section class="seccion" aria-labelledby="titulo-faq">
+      <div class="contenedor contenedor-faq">
+        <h2 id="titulo-faq" class="titulo-seccion centro texto-centro">Preguntas frecuentes</h2>
+        <p class="subtitulo-seccion centro" style="margin-left:auto; margin-right:auto;">Respuestas rápidas a las consultas más comunes de nuestros clientes.</p>
 
-                <div class="campo">
-                    <label for="asunto">Asunto *</label>
-                    <select id="asunto" name="asunto" required>
-                        <option value="">-- Seleccione --</option>
-                        <option value="pedido">Pedido</option>
-                        <option value="reserva">Reserva</option>
-                        <option value="consulta">Consulta general</option>
-                    </select>
-                </div>
+        <div class="faq-lista">
+          <article class="faq-item">
+            <button type="button" class="faq-pregunta" aria-expanded="false">
+              <span><i class="fa-solid fa-circle-question"></i> ¿Hacen delivery a domicilio?</span>
+              <i class="fa-solid fa-chevron-down flecha" aria-hidden="true"></i>
+            </button>
+            <div class="faq-respuesta" hidden>
+              <p>Sí. Cubrimos todo el distrito de Chancay con un tiempo estimado de 30 a 45 minutos. El delivery es gratis en pedidos desde S/ 40; en pedidos menores se aplica un cargo de S/ 3.00.</p>
+            </div>
+          </article>
 
-                <div class="campo">
-                    <label for="mensaje">Mensaje *</label>
-                    <textarea id="mensaje" name="mensaje" rows="5" placeholder="Escriba su mensaje aquí..."
-                        required></textarea>
-                </div>
+          <article class="faq-item">
+            <button type="button" class="faq-pregunta" aria-expanded="false">
+              <span><i class="fa-solid fa-circle-question"></i> ¿Cuánto demora mi pedido en el local?</span>
+              <i class="fa-solid fa-chevron-down flecha" aria-hidden="true"></i>
+            </button>
+            <div class="faq-respuesta" hidden>
+              <p>Un 1/4 de pollo está listo en unos 15 minutos; los combos familiares tardan entre 20 y 25 minutos porque se preparan al momento para conservar el crocante.</p>
+            </div>
+          </article>
 
-                <button type="submit" class="btn-enviar">Enviar mensaje</button>
-            </form>
-        </section>
-    </main>
+          <article class="faq-item">
+            <button type="button" class="faq-pregunta" aria-expanded="false">
+              <span><i class="fa-solid fa-circle-question"></i> ¿Puedo reservar combos para una celebración?</span>
+              <i class="fa-solid fa-chevron-down flecha" aria-hidden="true"></i>
+            </button>
+            <div class="faq-respuesta" hidden>
+              <p>Claro. Para pedidos grandes (Combo Fiesta o varios combos familiares) recomendamos avisarnos con 24 horas de anticipación al +51 987 654 321 para garantizar la disponibilidad.</p>
+            </div>
+          </article>
 
-    <footer class="site-footer">
-        <p>&copy; 2026 ATR Brostería — Chancay, Huaral, Lima.</p>
-        <p>Tel. 999 888 777 | Av. Pacífico 245, Chancay</p>
-    </footer>
+          <article class="faq-item">
+            <button type="button" class="faq-pregunta" aria-expanded="false">
+              <span><i class="fa-solid fa-circle-question"></i> ¿Qué formas de pago aceptan?</span>
+              <i class="fa-solid fa-chevron-down flecha" aria-hidden="true"></i>
+            </button>
+            <div class="faq-respuesta" hidden>
+              <p>Aceptamos efectivo, Yape, Plin y transferencias bancarias. En el caso del delivery, puedes pagar al repartidor o por adelantado mediante Yape o Plin.</p>
+            </div>
+          </article>
+
+          <article class="faq-item">
+            <button type="button" class="faq-pregunta" aria-expanded="false">
+              <span><i class="fa-solid fa-circle-question"></i> ¿Las promociones aplican para delivery?</span>
+              <i class="fa-solid fa-chevron-down flecha" aria-hidden="true"></i>
+            </button>
+            <div class="faq-respuesta" hidden>
+              <p>La mayoría de promociones aplica tanto en el local como en el delivery. Revisa el detalle de cada promoción en nuestra página de Promociones o pregúntanos por WhatsApp.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Pie de página -->
+  <footer class="site-footer">
+    <div class="contenedor footer-grid">
+      <div>
+        <h4><i class="fa-solid fa-drumstick-bite"></i> ATR Brostería</h4>
+        <p>Negocio gastronómico de Chancay dedicado al pollo broaster con receta exclusiva. Sabor inigualable, rapidez y precios accesibles.</p>
+        <div class="footer-redes">
+          <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook de ATR Brostería"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram de ATR Brostería"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://wa.me/51987654321" target="_blank" rel="noopener" aria-label="WhatsApp de ATR Brostería"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="https://tiktok.com" target="_blank" rel="noopener" aria-label="TikTok de ATR Brostería"><i class="fa-brands fa-tiktok"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4>Enlaces rápidos</h4>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="carta.html">Carta digital</a></li>
+          <li><a href="promociones.html">Promociones</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="galeria.html">Galería</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Horarios de atención</h4>
+        <ul>
+          <li>Lunes a viernes: 12:00 pm – 10:00 pm</li>
+          <li>Sábados y domingos: 12:00 pm – 11:00 pm</li>
+        </ul>
+        <p><span class="badge estado-badge" data-estado-local>Cargando estado...</span></p>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <address>
+          <ul>
+            <li><i class="fa-solid fa-location-dot"></i> Av. Principal 123, Chancay</li>
+            <li><i class="fa-solid fa-phone"></i> <a href="tel:+51987654321">+51 987 654 321</a></li>
+            <li><i class="fa-solid fa-envelope"></i> <a href="mailto:pedidos@atrbrosteria.pe">pedidos@atrbrosteria.pe</a></li>
+          </ul>
+        </address>
+      </div>
+    </div>
+    <div class="footer-copy">
+      <p>&copy; <span id="anio-actual">2026</span> ATR Brostería - Chancay · Grupo 4</p>
+    </div>
+  </footer>
 </body>
-
 </html>

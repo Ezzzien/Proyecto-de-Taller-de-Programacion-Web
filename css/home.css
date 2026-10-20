@@ -1,0 +1,348 @@
+/* Estilos de la página principal */
+
+
+/* Portada principal */
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 88vh;                     /* móvil: casi pantalla completa */
+  padding: 3rem 1rem;
+  text-align: center;
+  background:
+    linear-gradient(rgba(38, 50, 56, 0.72), rgba(183, 28, 28, 0.55)),
+    url("../img/hero.jpg") center / cover no-repeat;
+}
+
+@media (min-width: 768px) {
+  .hero { min-height: 92vh; }
+}
+
+@media (min-width: 1280px) {
+  .hero { min-height: 100vh; }
+}
+
+.hero-contenido {
+  max-width: 760px;
+  animation: aparecerArriba 0.8s ease both;
+}
+
+.hero h1 {
+  color: #FFFFFF;
+  font-size: 2.1rem;
+  font-weight: 800;
+  margin: 1rem 0 0.6rem;
+  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.45);
+}
+
+.hero h1 em {
+  color: #FFD54F;
+  font-style: normal;
+}
+
+@media (min-width: 768px) {
+  .hero h1 { font-size: 3rem; }
+}
+
+@media (min-width: 1280px) {
+  .hero h1 { font-size: 3.6rem; }
+}
+
+.hero-eslogan {
+  color: #FFFFFF;
+  font-size: 1.05rem;
+  margin-bottom: 1.6rem;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.hero-botones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  justify-content: center;
+}
+
+.hero-valoracion {
+  margin-top: 1.4rem;
+  color: #FFD54F;
+  font-size: 0.92rem;
+}
+
+.estrellas i { margin: 0 1px; }
+
+/* Badge de estado abierto / cerrado */
+.estado-badge {
+  font-size: 0.85rem;
+  padding: 0.4rem 1rem;
+}
+
+.estado-badge.estado-abierto { background-color: var(--color-exito); }
+.estado-badge.estado-cerrado { background-color: var(--color-error); }
+
+/* Pilares del negocio */
+.grid-pilares {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.4rem;
+}
+
+@media (min-width: 768px) {
+  .grid-pilares { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1024px) {
+  .grid-pilares { grid-template-columns: repeat(4, 1fr); }
+}
+
+.tarjeta-pilar {
+  padding: 1.6rem 1.2rem;
+  text-align: center;
+}
+
+.pilar-icono {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  margin-bottom: 0.9rem;
+  border-radius: 50%;
+  font-size: 1.6rem;
+  color: #FFFFFF;
+  background: linear-gradient(135deg, var(--color-primario), var(--color-acento));
+  transition: transform 0.4s ease;
+}
+
+.tarjeta-pilar:hover .pilar-icono {
+  transform: rotate(-10deg) scale(1.12);
+}
+
+.tarjeta-pilar h3 {
+  font-size: 1.05rem;
+  margin-bottom: 0.4rem;
+}
+
+.tarjeta-pilar p {
+  font-size: 0.9rem;
+  color: var(--color-gris);
+}
+
+/* Promoción del día */
+.promo-dia {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.tarjeta-promo-dia {
+  display: grid;
+  grid-template-columns: 1fr;
+  overflow: hidden;
+  border-radius: var(--radio);
+  background-color: #FFFFFF;
+  box-shadow: var(--sombra-elevada);
+  animation: aparecerArriba 0.6s ease both;
+}
+
+@media (min-width: 768px) {
+  .tarjeta-promo-dia { grid-template-columns: 1fr 1.2fr; }
+}
+
+.tarjeta-promo-dia img {
+  width: 100%;
+  height: 100%;
+  min-height: 240px;
+  object-fit: cover;
+}
+
+.promo-dia-cuerpo {
+  padding: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  justify-content: center;
+}
+
+.promo-dia-cuerpo .etiqueta-dia {
+  color: var(--color-acento);
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.promo-dia-cuerpo h3 {
+  font-size: 1.5rem;
+}
+
+.promo-precios {
+  display: flex;
+  align-items: baseline;
+  gap: 0.7rem;
+}
+
+.promo-precios .precio-nuevo {
+  font-family: var(--fuente-titulos);
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--color-primario);
+}
+
+.promo-precios .precio-viejo {
+  font-size: 1.05rem;
+  color: var(--color-gris);
+  text-decoration: line-through;
+}
+
+.promo-dia-cuerpo p.desc {
+  color: var(--color-gris);
+  font-size: 0.95rem;
+}
+
+.promo-dia-cuerpo .horario {
+  font-size: 0.88rem;
+  color: var(--color-texto);
+}
+
+/* Testimonios */
+.grid-testimonios {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.4rem;
+}
+
+@media (min-width: 768px) {
+  .grid-testimonios { grid-template-columns: repeat(3, 1fr); }
+}
+
+.tarjeta-testimonio {
+  padding: 1.4rem;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.tarjeta-testimonio .estrellas {
+  color: #FFC107;
+}
+
+.tarjeta-testimonio blockquote {
+  font-size: 0.93rem;
+  color: var(--color-texto);
+  font-style: italic;
+}
+
+.tarjeta-testimonio .autor {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-top: auto;
+}
+
+.tarjeta-testimonio .autor i {
+  width: 42px;
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-primario), var(--color-acento));
+  color: #FFFFFF;
+  font-size: 1.1rem;
+}
+
+.tarjeta-testimonio .autor strong {
+  display: block;
+  font-size: 0.92rem;
+}
+
+.tarjeta-testimonio .autor span {
+  font-size: 0.8rem;
+  color: var(--color-gris);
+}
+
+/* Ubicación y mapa */
+.mapa-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.8rem;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .mapa-grid { grid-template-columns: 1fr 1.1fr; }
+}
+
+.mapa-info p {
+  color: var(--color-gris);
+  margin: 0.6rem 0 1rem;
+}
+
+.lista-contacto li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  margin-bottom: 0.6rem;
+  font-size: 0.95rem;
+}
+
+.lista-contacto i {
+  color: var(--color-acento);
+  margin-top: 4px;
+  width: 18px;
+  text-align: center;
+}
+
+.mapa-info .btn { margin-top: 0.8rem; }
+
+.mapa-iframe iframe {
+  width: 100%;
+  height: 340px;
+  border: 0;
+  border-radius: var(--radio);
+  box-shadow: var(--sombra-tarjeta);
+}
+
+@media (min-width: 768px) {
+  .mapa-iframe iframe { height: 420px; }
+}
+
+/* Bloque de delivery */
+.cta-delivery {
+  background:
+    linear-gradient(rgba(183, 28, 28, 0.9), rgba(183, 28, 28, 0.9)),
+    url("../img/delivery.jpg") center / cover no-repeat;
+  padding: 3rem 0;
+}
+
+.cta-delivery-contenido {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  text-align: center;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .cta-delivery-contenido {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+  }
+}
+
+.cta-delivery h2 {
+  color: #FFFFFF;
+  font-size: 1.6rem;
+  margin-bottom: 0.3rem;
+}
+
+.cta-delivery p {
+  color: #FFD54F;
+}
+
+.btn-grande {
+  font-size: 1.1rem;
+  padding: 1rem 2.2rem;
+}

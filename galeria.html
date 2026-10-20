@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galería | ATR Brostería - Chancay</title>
+  <meta name="description" content="Galería de fotos y videos de ATR Brostería: nuestro local, la cocina, el proceso de preparación y nuestros deliciosos combos.">
+  <meta name="author" content="Grupo 4 - Taller de Programación Web UTP">
+  <link rel="icon" type="image/png" href="img/favicon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;1,400&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/galeria.css">
+</head>
+<body>
+  <a href="#contenido" class="saltar-contenido">Saltar al contenido principal</a>
+
+  <!-- Encabezado -->
+  <header class="site-header">
+    <div class="contenedor barra-header">
+      <a href="index.html" class="logo" aria-label="ATR Brostería - Inicio">
+        <i class="fa-solid fa-drumstick-bite" aria-hidden="true"></i>
+        <span>
+          <span class="logo-nombre">ATR <span>Brostería</span></span><br>
+          <span class="logo-eslogan">Sabor inigualable desde Chancay</span>
+        </span>
+      </a>
+      <button id="btn-hamburguesa" class="btn-hamburguesa" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="main-nav">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="main-nav" class="main-nav" aria-label="Navegación principal">
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="carta.html">Carta</a></li>
+          <li><a href="promociones.html">Promociones</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="galeria.html">Galería</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenido -->
+  <main id="contenido">
+
+    <section class="page-banner">
+      <div>
+        <h1>Galería</h1>
+        <p>Un vistazo a nuestro local, nuestra cocina y nuestros sabores</p>
+        <p class="breadcrumb"><a href="index.html">Inicio</a> / Galería</p>
+      </div>
+    </section>
+
+    <!-- Video de presentación -->
+    <section class="seccion" aria-labelledby="titulo-video">
+      <div class="contenedor">
+        <h2 id="titulo-video" class="titulo-seccion centro texto-centro">Video de presentación</h2>
+        <p class="subtitulo-seccion centro" style="margin-left:auto; margin-right:auto;">Un pequeño recorrido por ATR Brostería. Usa los controles para reproducirlo.</p>
+
+        <figure class="video-contenedor">
+          <video controls preload="metadata" poster="img/hero.jpg">
+            <source src="video/presentacion.mp4" type="video/mp4">
+            Tu navegador no soporta la etiqueta de video. Descarga el video
+            <a href="video/presentacion.mp4">en este enlace</a>.
+          </video>
+          <figcaption>ATR Brostería — Sabor inigualable desde Chancay (≈15 segundos)</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Galería de fotos -->
+    <section class="seccion seccion-crema" aria-labelledby="titulo-fotos">
+      <div class="contenedor">
+        <h2 id="titulo-fotos" class="titulo-seccion centro texto-centro">Fotos del local y de la carta</h2>
+        <p class="subtitulo-seccion centro" style="margin-left:auto; margin-right:auto;">
+          Haz clic en cualquier foto para abrirla en tamaño grande. Navega con las flechas
+          del teclado (&larr; y &rarr;) y cierra con la tecla Escape.
+        </p>
+
+        <div id="grid-galeria" class="grid-galeria"></div>
+      </div>
+    </section>
+
+    <!-- Audio de bienvenida -->
+    <section class="seccion" aria-labelledby="titulo-audio">
+      <div class="contenedor">
+        <h2 id="titulo-audio" class="titulo-seccion centro texto-centro">Mensaje de bienvenida</h2>
+        <p class="subtitulo-seccion centro" style="margin-left:auto; margin-right:auto;">Escucha el saludo de la familia ATR Brostería.</p>
+
+        <figure class="audio-contenedor">
+          <i class="fa-solid fa-volume-high audio-icono" aria-hidden="true"></i>
+          <audio controls preload="none" src="video/bienvenida.wav">
+            Tu navegador no soporta la etiqueta de audio.
+          </audio>
+          <figcaption>Mensaje grabado para los visitantes del sitio web</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="seccion seccion-crema" aria-labelledby="titulo-cta-galeria">
+      <div class="contenedor texto-centro">
+        <h2 id="titulo-cta-galeria" class="titulo-seccion centro">¿Se te antojó?</h2>
+        <p class="subtitulo-seccion centro" style="margin-left:auto; margin-right:auto;">Todo lo que ves aquí (y mucho más) te espera en nuestra carta digital.</p>
+        <a href="carta.html" class="btn btn-primario btn-grande">Ir a la carta <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox oculto" role="dialog" aria-modal="true" aria-label="Visor de imágenes de la galería">
+    <button id="lb-cerrar" class="lightbox-cerrar" aria-label="Cerrar visor"><i class="fa-solid fa-xmark"></i></button>
+    <button id="lb-anterior" class="lightbox-flecha izquierda" aria-label="Imagen anterior"><i class="fa-solid fa-chevron-left"></i></button>
+    <img id="lb-imagen" src="" alt="">
+    <p id="lb-caption" class="lightbox-caption"></p>
+    <button id="lb-siguiente" class="lightbox-flecha derecha" aria-label="Imagen siguiente"><i class="fa-solid fa-chevron-right"></i></button>
+  </div>
+
+  <!-- Pie de página -->
+  <footer class="site-footer">
+    <div class="contenedor footer-grid">
+      <div>
+        <h4><i class="fa-solid fa-drumstick-bite"></i> ATR Brostería</h4>
+        <p>Negocio gastronómico de Chancay dedicado al pollo broaster con receta exclusiva. Sabor inigualable, rapidez y precios accesibles.</p>
+        <div class="footer-redes">
+          <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook de ATR Brostería"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram de ATR Brostería"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://wa.me/51987654321" target="_blank" rel="noopener" aria-label="WhatsApp de ATR Brostería"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="https://tiktok.com" target="_blank" rel="noopener" aria-label="TikTok de ATR Brostería"><i class="fa-brands fa-tiktok"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4>Enlaces rápidos</h4>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="carta.html">Carta digital</a></li>
+          <li><a href="promociones.html">Promociones</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="galeria.html">Galería</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Horarios de atención</h4>
+        <ul>
+          <li>Lunes a viernes: 12:00 pm – 10:00 pm</li>
+          <li>Sábados y domingos: 12:00 pm – 11:00 pm</li>
+        </ul>
+        <p><span class="badge estado-badge" data-estado-local>Cargando estado...</span></p>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <address>
+          <ul>
+            <li><i class="fa-solid fa-location-dot"></i> Av. Principal 123, Chancay</li>
+            <li><i class="fa-solid fa-phone"></i> <a href="tel:+51987654321">+51 987 654 321</a></li>
+            <li><i class="fa-solid fa-envelope"></i> <a href="mailto:pedidos@atrbrosteria.pe">pedidos@atrbrosteria.pe</a></li>
+          </ul>
+        </address>
+      </div>
+    </div>
+    <div class="footer-copy">
+      <p>&copy; <span id="anio-actual">2026</span> ATR Brostería - Chancay · Grupo 4</p>
+    </div>
+  </footer>
+</body>
+</html>

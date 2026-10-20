@@ -1,65 +1,207 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ATR Brostería Chancay | Carta</title>
-    <link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carta Digital | ATR Brostería - Chancay</title>
+  <meta name="description" content="Carta digital de ATR Brostería: pollos broaster, combos familiares, guarniciones y bebidas. Precios en soles y pedidos por WhatsApp en Chancay.">
+  <meta name="author" content="Grupo 4 - Taller de Programación Web UTP">
+  <link rel="icon" type="image/png" href="img/favicon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;1,400&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/carta.css">
 </head>
-
 <body>
-    <header class="site-header">
-        <div class="logo">
-            <img src="/assets/img/logo-atr.jpg" alt="Logo ATR Brostería" width="60">
-            <h1>ATR Brostería</h1>
+  <a href="#contenido" class="saltar-contenido">Saltar al contenido principal</a>
+
+  <!-- Encabezado -->
+  <header class="site-header">
+    <div class="contenedor barra-header">
+      <a href="index.html" class="logo" aria-label="ATR Brostería - Inicio">
+        <i class="fa-solid fa-drumstick-bite" aria-hidden="true"></i>
+        <span>
+          <span class="logo-nombre">ATR <span>Brostería</span></span><br>
+          <span class="logo-eslogan">Sabor inigualable desde Chancay</span>
+        </span>
+      </a>
+      <button id="btn-hamburguesa" class="btn-hamburguesa" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="main-nav">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="main-nav" class="main-nav" aria-label="Navegación principal">
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="carta.html">Carta</a></li>
+          <li><a href="promociones.html">Promociones</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="galeria.html">Galería</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenido -->
+  <main id="contenido">
+
+    <!-- Banner -->
+    <section class="page-banner">
+      <div>
+        <h1>Nuestra Carta</h1>
+        <p>Pollo broaster con receta exclusiva, preparado al instante</p>
+        <p class="breadcrumb"><a href="index.html">Inicio</a> / Carta</p>
+      </div>
+    </section>
+
+    <!-- Filtros por categoría -->
+    <section class="seccion-carta" aria-label="Filtros de la carta">
+      <div class="contenedor">
+        <div id="filtros-categoria" class="filtros-categoria" role="group" aria-label="Filtrar productos por categoría">
         </div>
-        <nav class="main-nav">
-            <ul>
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="nosotros.html">Nosotros</a></li>
-                <li><a href="carta.html" class="activo">Carta</a></li>
-                <li><a href="promociones.html">Promociones</a></li>
-                <li><a href="contacto.html">Contacto</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <main>
-        <section class="galeria-carta">
-            <h2>Nuestros favoritos</h2>
-            <div class="grid-carta">
-                <figure class="producto">
-                    <img src="assets/img/pollo-broaster.jpg"
-                        alt="Porción de pollo broaster dorado con guarnición de papas" width="320" height="240"
-                        loading="lazy">
-                    <figcaption>Pollo Broaster (1/4) — S/ 14.00</figcaption>
-                </figure>
+        <!-- Productos -->
+        <div id="grid-carta" class="grid-productos" aria-live="polite">
+        </div>
 
-                <figure class="producto">
-                    <img src="assets/img/combo-familiar.jpg" alt="Combo familiar con pollo, papas grandes y cremas"
-                        width="320" height="240" loading="lazy">
-                    <figcaption>Combo Familiar — S/ 45.00</figcaption>
-                </figure>
+        <p id="mensaje-vacio" class="mensaje-vacio oculto">
+          <i class="fa-solid fa-magnifying-glass"></i> No encontramos productos en esta categoría.
+        </p>
+      </div>
+    </section>
 
-                <figure class="producto">
-                    <img src="assets/img/papas-fritas.jpg" alt="Papas fritas crujientes en porción individual"
-                        width="320" height="240" loading="lazy">
-                    <figcaption>Papas Fritas (porción) — S/ 6.00</figcaption>
-                </figure>
+    <!-- Tabla de porciones y precios -->
+    <section class="seccion seccion-crema" aria-labelledby="titulo-tabla-precios">
+      <div class="contenedor">
+        <h2 id="titulo-tabla-precios" class="titulo-seccion">Tabla de porciones y precios</h2>
+        <p class="subtitulo-seccion">Referencia rápida del pollo broaster y sus acompañamientos. Todos los precios incluyen cremas de la casa.</p>
 
-                <figure class="producto">
-                    <img src="assets/img/c4.png" alt="Nuggets de pollo" width="320" height="240" loading="lazy">
-                    <figcaption>Nuggets de pollo — S/ 14.00</figcaption>
-                </figure>
-            </div>
-        </section>
-    </main>
+        <div class="tabla-responsiva">
+          <table class="tabla-personalizada">
+            <caption class="oculto">Porciones de pollo broaster con precio y cantidad de personas recomendada</caption>
+            <thead>
+              <tr>
+                <th scope="col">Porción</th>
+                <th scope="col">Incluye</th>
+                <th scope="col">Personas</th>
+                <th scope="col">Tiempo</th>
+                <th scope="col">Precio</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>1/4 Pollo Broaster</strong></td>
+                <td>Papas personales + 1 crema</td>
+                <td>1 persona</td>
+                <td>15 min</td>
+                <td class="precio-celda">S/ 12.00</td>
+              </tr>
+              <tr>
+                <td><strong>1/2 Pollo Broaster</strong></td>
+                <td>Papas familiares + 2 cremas</td>
+                <td>2 a 3 personas</td>
+                <td>18 min</td>
+                <td class="precio-celda">S/ 22.00</td>
+              </tr>
+              <tr>
+                <td><strong>Pollo Entero Broaster</strong></td>
+                <td>Papas grandes + 4 cremas</td>
+                <td>4 a 6 personas</td>
+                <td>25 min</td>
+                <td class="precio-celda">S/ 42.00</td>
+              </tr>
+              <tr>
+                <td><strong>Combo Familiar</strong></td>
+                <td>Pollo entero + papas + ensalada + gaseosa 1.5 L</td>
+                <td>4 a 6 personas</td>
+                <td>25 min</td>
+                <td class="precio-celda">S/ 59.00</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="4">Delivery gratis en pedidos desde S/ 40 dentro de Chancay</td>
+                <td class="precio-celda">S/ 0.00</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+    </section>
 
-    <footer class="site-footer">
-        <p>&copy; 2026 ATR Brostería — Chancay, Huaral, Lima.</p>
-        <p>Tel. 999 888 777 | Av. Pacífico 245, Chancay</p>
-    </footer>
+    <!-- CTA final -->
+    <section class="seccion" aria-labelledby="titulo-cta-carta">
+      <div class="contenedor texto-centro">
+        <h2 id="titulo-cta-carta" class="titulo-seccion centro">¿Ya decidiste tu combo?</h2>
+        <p class="subtitulo-seccion centro" style="margin-left:auto; margin-right:auto;">Haz tu pedido por WhatsApp y recógelo en el local o recíbelo en casa.</p>
+        <a href="https://wa.me/51987654321?text=Hola%20ATR%20Brostería,%20quiero%20hacer%20un%20pedido" class="btn btn-acento btn-grande" target="_blank" rel="noopener">
+          <i class="fa-brands fa-whatsapp"></i> Pedir por WhatsApp
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal de detalle -->
+  <div id="modal-producto" class="modal cerrado" role="dialog" aria-modal="true" aria-labelledby="modal-titulo">
+    <div class="modal-contenido">
+      <div class="modal-cabecera">
+        <h3 id="modal-titulo">Detalle del producto</h3>
+        <button id="btn-cerrar-modal" class="btn-cerrar-modal" aria-label="Cerrar ventana de detalle"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-cuerpo" id="modal-cuerpo">
+      </div>
+    </div>
+  </div>
+
+  <!-- Pie de página -->
+  <footer class="site-footer">
+    <div class="contenedor footer-grid">
+      <div>
+        <h4><i class="fa-solid fa-drumstick-bite"></i> ATR Brostería</h4>
+        <p>Negocio gastronómico de Chancay dedicado al pollo broaster con receta exclusiva. Sabor inigualable, rapidez y precios accesibles.</p>
+        <div class="footer-redes">
+          <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook de ATR Brostería"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram de ATR Brostería"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://wa.me/51987654321" target="_blank" rel="noopener" aria-label="WhatsApp de ATR Brostería"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="https://tiktok.com" target="_blank" rel="noopener" aria-label="TikTok de ATR Brostería"><i class="fa-brands fa-tiktok"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4>Enlaces rápidos</h4>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="carta.html">Carta digital</a></li>
+          <li><a href="promociones.html">Promociones</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="galeria.html">Galería</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Horarios de atención</h4>
+        <ul>
+          <li>Lunes a viernes: 12:00 pm – 10:00 pm</li>
+          <li>Sábados y domingos: 12:00 pm – 11:00 pm</li>
+        </ul>
+        <p><span class="badge estado-badge" data-estado-local>Cargando estado...</span></p>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <address>
+          <ul>
+            <li><i class="fa-solid fa-location-dot"></i> Av. Principal 123, Chancay</li>
+            <li><i class="fa-solid fa-phone"></i> <a href="tel:+51987654321">+51 987 654 321</a></li>
+            <li><i class="fa-solid fa-envelope"></i> <a href="mailto:pedidos@atrbrosteria.pe">pedidos@atrbrosteria.pe</a></li>
+          </ul>
+        </address>
+      </div>
+    </div>
+    <div class="footer-copy">
+      <p>&copy; <span id="anio-actual">2026</span> ATR Brostería - Chancay · Grupo 4</p>
+    </div>
+  </footer>
 </body>
-
 </html>
