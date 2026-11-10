@@ -1212,6 +1212,18 @@ function inicializarContacto() {
       return true;
     }
 
+    const selectTipo = campos.tipo;
+    const seccionProveedores = document.getElementById('seccion-proveedores');
+    if (selectTipo && seccionProveedores) {
+      selectTipo.addEventListener('change', () => {
+        if (selectTipo.value === 'proveedor') {
+          seccionProveedores.style.display = 'block';
+        } else {
+          seccionProveedores.style.display = 'none';
+        }
+      });
+    }
+
     // Validación interactiva onblur y input
     Object.keys(campos).forEach(key => {
       const el = campos[key];
@@ -1245,12 +1257,19 @@ function inicializarContacto() {
       }
 
       // Guardar en el buzón de mensajes (localStorage)
+      const inputEmpresa = document.getElementById('prov-empresa');
+      const inputProducto = document.getElementById('prov-producto');
+      const inputCantidad = document.getElementById('prov-cantidad');
+
       const datosMensaje = {
         nombre: campos.nombre.value.trim(),
         email: campos.email.value.trim(),
         telefono: campos.telefono.value.trim(),
         tipo: campos.tipo.value,
-        mensaje: campos.mensaje.value.trim()
+        mensaje: campos.mensaje.value.trim(),
+        empresa: inputEmpresa && inputEmpresa.value ? inputEmpresa.value.trim() : null,
+        productoOfertado: inputProducto && inputProducto.value ? inputProducto.value.trim() : null,
+        cantidad: inputCantidad && inputCantidad.value ? inputCantidad.value.trim() : null
       };
 
       guardarMensajeContacto(datosMensaje);

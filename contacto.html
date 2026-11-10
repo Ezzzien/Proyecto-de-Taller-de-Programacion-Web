@@ -94,10 +94,30 @@
                 <option value="pedido">Hacer un pedido</option>
                 <option value="delivery">Consultar delivery</option>
                 <option value="promociones">Promociones y combos</option>
+                <option value="proveedor">Propuesta de Proveedor / Área de Compras (RF-P1-04)</option>
                 <option value="felicitacion">Felicitación</option>
                 <option value="reclamo">Reclamo o sugerencia</option>
               </select>
               <span class="mensaje-error-campo" data-error-para="tipo" aria-live="polite"></span>
+            </div>
+
+            <!-- Campos específicos para proveedores (RF-P1-04) -->
+            <div id="seccion-proveedores" class="campo-completo" style="display: none; background: var(--color-crema); padding: 1rem; border-radius: 8px; border: 1px dashed var(--color-primario); margin-bottom: 1rem;">
+              <h4 style="margin: 0 0 0.6rem 0; font-size: 0.95rem; color: var(--color-primario);"><i class="fa-solid fa-truck-field"></i> Datos del Proveedor (Área de Compras ATR)</h4>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.8rem;">
+                <div class="campo" style="margin: 0;">
+                  <label for="prov-empresa" style="font-size: 0.85rem;">Nombre de la Empresa</label>
+                  <input type="text" id="prov-empresa" placeholder="Ej.: Avícola San Fernando">
+                </div>
+                <div class="campo" style="margin: 0;">
+                  <label for="prov-producto" style="font-size: 0.85rem;">Insumo / Producto ofertado</label>
+                  <input type="text" id="prov-producto" placeholder="Ej.: Pollo fresco eviscerado, aceite">
+                </div>
+                <div class="campo" style="margin: 0;">
+                  <label for="prov-cantidad" style="font-size: 0.85rem;">Cantidad / Capacidad de entrega</label>
+                  <input type="text" id="prov-cantidad" placeholder="Ej.: 100 kg semanales">
+                </div>
+              </div>
             </div>
 
             <div class="campo campo-completo">
