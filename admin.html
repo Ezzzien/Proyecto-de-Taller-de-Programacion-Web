@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel de Administración | ATR Brostería - Chancay</title>
+  <meta name="description" content="Panel administrativo de gestión de stock, disponibilidad y mensajes de ATR Brostería Chancay.">
+  <meta name="author" content="Grupo 4 - Taller de Programación Web UTP">
+  <link rel="icon" type="image/png" href="img/favicon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;1,400&family=Poppins:wght@500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .admin-container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    .admin-header-kpi {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    .kpi-card {
+      background-color: #FFFFFF;
+      padding: 1.4rem;
+      border-radius: var(--radio);
+      box-shadow: var(--sombra-tarjeta);
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      border-left: 5px solid var(--color-primario);
+    }
+
+    .kpi-card.kpi-verde {
+      border-left-color: var(--color-exito);
+    }
+
+    .kpi-card.kpi-amarillo {
+      border-left-color: var(--color-acento);
+    }
+
+    .kpi-card.kpi-rojo {
+      border-left-color: var(--color-error);
+    }
+
+    .kpi-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background-color: var(--color-crema);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: var(--color-primario);
+    }
+
+    .kpi-info h4 {
+      font-size: 0.88rem;
+      color: var(--color-gris);
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .kpi-info .kpi-num {
+      font-size: 1.8rem;
+      font-weight: 800;
+      font-family: var(--fuente-titulos);
+      color: var(--color-texto);
+      margin: 0.2rem 0 0;
+    }
+
+    .admin-tabs {
+      display: flex;
+      gap: 0.8rem;
+      margin-bottom: 1.5rem;
+      border-bottom: 2px solid var(--color-borde);
+      padding-bottom: 0.5rem;
+      overflow-x: auto;
+    }
+
+    .admin-tab-btn {
+      padding: 0.7rem 1.4rem;
+      border: none;
+      background: none;
+      font-family: var(--fuente-titulos);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--color-gris);
+      cursor: pointer;
+      border-radius: 8px 8px 0 0;
+      transition: all var(--transicion);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      white-space: nowrap;
+    }
+
+    .admin-tab-btn.activo {
+      background-color: var(--color-primario);
+      color: #FFFFFF;
+    }
+
+    .admin-panel-seccion {
+      background-color: #FFFFFF;
+      padding: 1.8rem;
+      border-radius: var(--radio);
+      box-shadow: var(--sombra-tarjeta);
+      margin-bottom: 2.5rem;
+    }
+
+    .admin-panel-seccion h3 {
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .tabla-admin {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+    }
+
+    .tabla-admin th {
+      background-color: var(--color-oscuro);
+      color: #FFFFFF;
+      padding: 0.8rem;
+      text-align: left;
+    }
+
+    .tabla-admin td {
+      padding: 0.8rem;
+      border-bottom: 1px solid var(--color-borde);
+      vertical-align: middle;
+    }
+
+    .tabla-admin tr:hover {
+      background-color: var(--color-crema);
+    }
+
+    .btn-toggle-stock {
+      padding: 0.4rem 0.8rem;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: transform 0.2s ease;
+    }
+
+    .btn-toggle-stock:hover {
+      transform: scale(1.05);
+    }
+
+    .btn-toggle-stock.disponible {
+      background-color: #E8F5E9;
+      color: var(--color-exito);
+      border: 1px solid var(--color-exito);
+    }
+
+    .btn-toggle-stock.agotado {
+      background-color: #FFEBEE;
+      color: var(--color-error);
+      border: 1px solid var(--color-error);
+    }
+
+    .mensaje-card {
+      border: 1px solid var(--color-borde);
+      border-radius: 8px;
+      padding: 1.2rem;
+      margin-bottom: 1rem;
+      background-color: #FAFAFA;
+      transition: border-color var(--transicion);
+    }
+
+    .mensaje-card.no-leido {
+      border-left: 5px solid var(--color-acento);
+      background-color: #FFFFFF;
+    }
+
+    .mensaje-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      color: var(--color-gris);
+      margin-bottom: 0.5rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .mensaje-acciones {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 0.8rem;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+
+<body>
+  <a href="#contenido" class="saltar-contenido">Saltar al contenido principal</a>
+
+  <!-- Encabezado -->
+  <header class="site-header">
+    <div class="contenedor barra-header">
+      <a href="index.html" class="logo" aria-label="ATR Brostería - Inicio">
+        <i class="fa-solid fa-drumstick-bite" aria-hidden="true"></i>
+        <span>
+          <span class="logo-nombre">ATR <span>Brostería</span></span><br>
+          <span class="logo-eslogan">Panel de Control Administrativo</span>
+        </span>
+      </a>
+
+      <button id="btn-hamburguesa" class="btn-hamburguesa" aria-label="Abrir menú de navegación" aria-expanded="false"
+        aria-controls="main-nav">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav id="main-nav" class="main-nav" aria-label="Navegación principal">
+        <ul>
+          <li><a href="index.html"><i class="fa-solid fa-arrow-left"></i> Volver a la Web</a></li>
+          <li><a href="carta.html">Ver Carta Pública</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+          <li><a href="admin.html" class="activo" style="color: var(--color-acento); font-weight: 700;"><i class="fa-solid fa-lock"></i> Admin ATR</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <!-- Banner -->
+    <section class="page-banner">
+      <div>
+        <h1>Panel de Administración ATR</h1>
+        <p>Control de disponibilidad de carta (RF-P1), tiempos de preparación (RF-P2) y buzón de consultas (RF-P4)</p>
+        <p class="breadcrumb"><a href="index.html">Inicio</a> / Administración</p>
+      </div>
+    </section>
+
+    <div class="admin-container">
+
+      <!-- Métricas KPI -->
+      <section class="admin-header-kpi">
+        <article class="kpi-card">
+          <div class="kpi-icon"><i class="fa-solid fa-drumstick-bite"></i></div>
+          <div class="kpi-info">
+            <h4>Total Productos</h4>
+            <div class="kpi-num" id="kpi-total-prod">13</div>
+          </div>
+        </article>
+
+        <article class="kpi-card kpi-verde">
+          <div class="kpi-icon" style="color: var(--color-exito);"><i class="fa-solid fa-circle-check"></i></div>
+          <div class="kpi-info">
+            <h4>Disponibles</h4>
+            <div class="kpi-num" id="kpi-disponibles">13</div>
+          </div>
+        </article>
+
+        <article class="kpi-card kpi-rojo">
+          <div class="kpi-icon" style="color: var(--color-error);"><i class="fa-solid fa-triangle-exclamation"></i></div>
+          <div class="kpi-info">
+            <h4>Agotados</h4>
+            <div class="kpi-num" id="kpi-agotados">0</div>
+          </div>
+        </article>
+
+        <article class="kpi-card kpi-amarillo">
+          <div class="kpi-icon" style="color: var(--color-acento);"><i class="fa-solid fa-envelope-open-text"></i></div>
+          <div class="kpi-info">
+            <h4>Mensajes Recibidos</h4>
+            <div class="kpi-num" id="kpi-mensajes">0</div>
+          </div>
+        </article>
+      </section>
+
+      <!-- Pestañas -->
+      <div class="admin-tabs" role="tablist">
+        <button type="button" class="admin-tab-btn activo" id="tab-btn-stock" onclick="cambiarTab('stock')">
+          <i class="fa-solid fa-boxes-stacked"></i> Disponibilidad y Stock (RF-P1-02)
+        </button>
+        <button type="button" class="admin-tab-btn" id="tab-btn-mensajes" onclick="cambiarTab('mensajes')">
+          <i class="fa-solid fa-inbox"></i> Buzón de Mensajes (RF-P1-06)
+        </button>
+        <button type="button" class="admin-tab-btn" id="tab-btn-guia" onclick="cambiarTab('guia')">
+          <i class="fa-solid fa-circle-info"></i> Documentación del Negocio
+        </button>
+      </div>
+
+      <!-- Tab 1: Gestión de Stock y Productos -->
+      <section id="panel-stock" class="admin-panel-seccion">
+        <h3>
+          <span><i class="fa-solid fa-utensils" style="color:var(--color-primario);"></i> Control de Disponibilidad de la Carta</span>
+          <span style="font-size: 0.85rem; font-weight: normal; color: var(--color-gris);">
+            Los cambios se guardan en tiempo real y se reflejan al instante en <a href="carta.html" target="_blank" style="color:var(--color-acento); text-decoration:underline;">carta.html</a>
+          </span>
+        </h3>
+        <p style="font-size: 0.92rem; color: var(--color-gris); margin-bottom: 1.2rem;">
+          Haz clic en el botón de estado para marcar un producto como <strong>Disponible</strong> o <strong>Agotado</strong> temporalmente cuando se agote el insumo en cocina.
+        </p>
+
+        <div class="tabla-responsiva">
+          <table class="tabla-admin">
+            <thead>
+              <tr>
+                <th>Imagen</th>
+                <th>Producto</th>
+                <th>Categoría</th>
+                <th>Precio</th>
+                <th>Tiempo Prep.</th>
+                <th>Estado de Disponibilidad</th>
+                <th>Acción</th>
+              </tr>
+            </thead>
+            <tbody id="tabla-cuerpo-productos">
+              <!-- Renderizado dinámico con JS -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Tab 2: Buzón de Mensajes -->
+      <section id="panel-mensajes" class="admin-panel-seccion" style="display: none;">
+        <h3>
+          <span><i class="fa-solid fa-inbox" style="color:var(--color-primario);"></i> Mensajes de Clientes y Proveedores</span>
+          <div>
+            <button type="button" class="btn btn-acento" style="font-size: 0.85rem; padding: 0.4rem 0.8rem;" onclick="insertarMensajeDemo()">
+              <i class="fa-solid fa-plus"></i> Agregar mensaje de prueba
+            </button>
+            <button type="button" class="btn btn-borde" style="font-size: 0.85rem; padding: 0.4rem 0.8rem; margin-left: 0.4rem;" onclick="limpiarBuzon()">
+              <i class="fa-solid fa-trash"></i> Vaciar buzón
+            </button>
+          </div>
+        </h3>
+        <p style="font-size: 0.92rem; color: var(--color-gris); margin-bottom: 1.2rem;">
+          Mensajes enviados desde el formulario de <a href="contacto.html" target="_blank" style="color:var(--color-acento); text-decoration:underline;">contacto.html</a> y solicitudes de cotización o proveedores.
+        </p>
+
+        <div id="lista-mensajes-admin">
+          <!-- Renderizado dinámico de mensajes -->
+        </div>
+      </section>
+
+      <!-- Tab 3: Guía y Procesos del Proyecto -->
+      <section id="panel-guia" class="admin-panel-seccion" style="display: none;">
+        <h3><i class="fa-solid fa-book" style="color:var(--color-primario);"></i> Resumen de Procesos y Requerimientos de ATR Brostería</h3>
+        
+        <div style="display: grid; gap: 1rem; margin-top: 1rem;">
+          <div style="padding: 1rem; background-color: var(--color-crema); border-radius: 8px;">
+            <h4 style="margin: 0 0 0.4rem 0; color: var(--color-primario);"><i class="fa-solid fa-boxes-packing"></i> Proceso 1: Recepción y gestión de insumos</h4>
+            <p style="margin: 0; font-size: 0.9rem;">Gestión de stock de pollos, papas y aceites. El sistema permite marcar ítems como agotados (RF-P1-02) y recibir ofertas de proveedores (RF-P1-04) en este panel.</p>
+          </div>
+
+          <div style="padding: 1rem; background-color: var(--color-crema); border-radius: 8px;">
+            <h4 style="margin: 0 0 0.4rem 0; color: var(--color-primario);"><i class="fa-solid fa-bowl-food"></i> Proceso 2: Marinado y preparación de alimentos</h4>
+            <p style="margin: 0; font-size: 0.9rem;">Receta exclusiva de marinado de 4 horas descrita en <a href="nosotros.html">nosotros.html</a> (RF-P2-01) y galería fotográfica de cocina en <a href="galeria.html">galeria.html</a> (RF-P2-03).</p>
+          </div>
+
+          <div style="padding: 1rem; background-color: var(--color-crema); border-radius: 8px;">
+            <h4 style="margin: 0 0 0.4rem 0; color: var(--color-primario);"><i class="fa-solid fa-fire"></i> Proceso 3: Fritura a presión de pollo</h4>
+            <p style="margin: 0; font-size: 0.9rem;">Cocción a presión entre 170 y 180 °C en tres presentaciones (1/4, 1/2 y entero) con filtros interactivos de categoría en <a href="carta.html">carta.html</a> (RF-P3-03).</p>
+          </div>
+
+          <div style="padding: 1rem; background-color: var(--color-crema); border-radius: 8px;">
+            <h4 style="margin: 0 0 0.4rem 0; color: var(--color-primario);"><i class="fa-solid fa-comments"></i> Proceso 4: Toma de pedidos y atención al cliente</h4>
+            <p style="margin: 0; font-size: 0.9rem;">Formulario validado con JavaScript (RF-P4-02), mapa en Chancay (RF-P4-05), redes sociales en footer y acordeón de preguntas frecuentes (RF-P4-07).</p>
+          </div>
+
+          <div style="padding: 1rem; background-color: var(--color-crema); border-radius: 8px;">
+            <h4 style="margin: 0 0 0.4rem 0; color: var(--color-primario);"><i class="fa-solid fa-cubes"></i> Proceso 5: Empaquetado y personalización de combos</h4>
+            <p style="margin: 0; font-size: 0.9rem;">Personalizador dinámico de combos mediante checkboxes con la función reactiva <code>actualizarPrecio()</code> en el modal de la carta (RF-P5-02, RF-P5-03).</p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Pie de página -->
+  <footer class="site-footer">
+    <div class="contenedor footer-grid">
+      <div>
+        <h4><i class="fa-solid fa-drumstick-bite"></i> ATR Brostería</h4>
+        <p>Panel de Administración y gestión digital para ATR Brostería - Chancay.</p>
+      </div>
+      <div>
+        <h4>Enlaces rápidos</h4>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="carta.html">Carta</a></li>
+          <li><a href="promociones.html">Promociones</a></li>
+          <li><a href="admin.html">Panel Admin</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Horarios del negocio</h4>
+        <ul>
+          <li>Lun. a vie.: 12:00 pm – 10:00 pm</li>
+          <li>Sáb. y dom.: 12:00 pm – 11:00 pm</li>
+        </ul>
+        <p><span class="badge estado-badge" data-estado-local>Cargando...</span></p>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <address>
+          <ul>
+            <li><i class="fa-solid fa-location-dot"></i> Av. Principal 123, Chancay</li>
+            <li><i class="fa-solid fa-phone"></i> +51 987 654 321</li>
+          </ul>
+        </address>
+      </div>
+    </div>
+    <div class="footer-copy">
+      <p>&copy; <span id="anio-actual">2026</span> ATR Brostería - Chancay · Grupo 4</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script>
+    // Lógica específica para el panel de administración
+    function cambiarTab(tabId) {
+      document.getElementById('panel-stock').style.display = tabId === 'stock' ? 'block' : 'none';
+      document.getElementById('panel-mensajes').style.display = tabId === 'mensajes' ? 'block' : 'none';
+      document.getElementById('panel-guia').style.display = tabId === 'guia' ? 'block' : 'none';
+
+      document.getElementById('tab-btn-stock').classList.toggle('activo', tabId === 'stock');
+      document.getElementById('tab-btn-mensajes').classList.toggle('activo', tabId === 'mensajes');
+      document.getElementById('tab-btn-guia').classList.toggle('activo', tabId === 'guia');
+    }
+
+    function renderizarTablaProductosAdmin() {
+      const tbody = document.getElementById('tabla-cuerpo-productos');
+      if (!tbody) return;
+
+      const productos = window.ATR.obtenerProductos();
+      let total = productos.length;
+      let disponibles = 0;
+      let agotados = 0;
+
+      tbody.innerHTML = productos.map(prod => {
+        if (prod.disponible) disponibles++;
+        else agotados++;
+
+        return `
+          <tr>
+            <td><img src="${prod.imagen}" alt="${prod.nombre}" style="width: 50px; height: 50px; object-fit: cover; border-radius: 6px;"></td>
+            <td><strong>${prod.nombre}</strong></td>
+            <td><span class="badge" style="background:#eee; color:#333; text-transform:capitalize;">${prod.categoria}</span></td>
+            <td style="font-weight: 700; color: var(--color-primario);">S/ ${prod.precio.toFixed(2)}</td>
+            <td>${prod.tiempo}</td>
+            <td>
+              <span class="badge ${prod.disponible ? 'estado-disponible' : 'estado-agotado'}" style="background-color: ${prod.disponible ? '#E8F5E9' : '#FFEBEE'}; color: ${prod.disponible ? 'var(--color-exito)' : 'var(--color-error)'};">
+                <i class="fa-solid ${prod.disponible ? 'fa-check' : 'fa-xmark'}"></i> ${prod.disponible ? 'Disponible' : 'Agotado'}
+              </span>
+            </td>
+            <td>
+              <button type="button" class="btn-toggle-stock ${prod.disponible ? 'disponible' : 'agotado'}" onclick="cambiarDisponibilidad('${prod.id}')">
+                <i class="fa-solid fa-arrows-rotate"></i> ${prod.disponible ? 'Marcar Agotado' : 'Marcar Disponible'}
+              </button>
+            </td>
+          </tr>
+        `;
+      }).join('');
+
+      document.getElementById('kpi-total-prod').textContent = total;
+      document.getElementById('kpi-disponibles').textContent = disponibles;
+      document.getElementById('kpi-agotados').textContent = agotados;
+    }
+
+    function cambiarDisponibilidad(id) {
+      window.ATR.toggleDisponibilidad(id);
+      renderizarTablaProductosAdmin();
+    }
+
+    function renderizarMensajesAdmin() {
+      const contenedor = document.getElementById('lista-mensajes-admin');
+      const kpiMensajes = document.getElementById('kpi-mensajes');
+      if (!contenedor) return;
+
+      const raw = localStorage.getItem('atr_mensajes_contacto');
+      const mensajes = raw ? JSON.parse(raw) : [];
+
+      if (kpiMensajes) kpiMensajes.textContent = mensajes.length;
+
+      if (mensajes.length === 0) {
+        contenedor.innerHTML = `
+          <div style="text-align: center; padding: 2rem; color: var(--color-gris);">
+            <i class="fa-solid fa-inbox" style="font-size: 2.5rem; margin-bottom: 0.8rem; display: block; opacity: 0.5;"></i>
+            <p>No hay mensajes registrados en el buzón actualmente.</p>
+            <button type="button" class="btn btn-acento" onclick="insertarMensajeDemo()">
+              <i class="fa-solid fa-plus"></i> Crear mensaje de prueba
+            </button>
+          </div>
+        `;
+        return;
+      }
+
+      contenedor.innerHTML = mensajes.map((msg, idx) => `
+        <article class="mensaje-card ${!msg.leido ? 'no-leido' : ''}">
+          <div class="mensaje-meta">
+            <span><strong><i class="fa-solid fa-user"></i> ${msg.nombre}</strong> · <i class="fa-solid fa-envelope"></i> ${msg.email} · <i class="fa-solid fa-phone"></i> ${msg.telefono}</span>
+            <span><i class="fa-solid fa-clock"></i> ${msg.fecha || 'Reciente'}</span>
+          </div>
+          <div style="margin: 0.5rem 0;">
+            <span class="badge" style="background-color: var(--color-crema); color: var(--color-texto);"><i class="fa-solid fa-tag"></i> Tipo: ${msg.tipo}</span>
+            ${!msg.leido ? '<span class="badge" style="background-color: var(--color-acento); color: #fff; margin-left: 0.4rem;">Nuevo</span>' : ''}
+          </div>
+          <p style="font-size: 0.95rem; margin: 0.6rem 0; color: #212121; background: #FFF; padding: 0.8rem; border-radius: 6px; border: 1px solid #E0E0E0;">
+            "${msg.mensaje}"
+          </p>
+          <div class="mensaje-acciones">
+            <a href="https://wa.me/51${msg.telefono}?text=${encodeURIComponent(`Hola ${msg.nombre}, te saludamos de ATR Brostería en respuesta a tu consulta sobre "${msg.tipo}".`)}" class="btn btn-acento" style="font-size: 0.82rem; padding: 0.35rem 0.7rem;" target="_blank" rel="noopener">
+              <i class="fa-brands fa-whatsapp"></i> Responder WhatsApp
+            </a>
+            <button type="button" class="btn btn-borde" style="font-size: 0.82rem; padding: 0.35rem 0.7rem;" onclick="marcarLeido(${idx})">
+              <i class="fa-solid ${msg.leido ? 'fa-envelope' : 'fa-check'}"></i> ${msg.leido ? 'Marcar no leído' : 'Marcar leído'}
+            </button>
+            <button type="button" class="btn" style="background-color: #FFEBEE; color: var(--color-error); font-size: 0.82rem; padding: 0.35rem 0.7rem;" onclick="eliminarMensaje(${idx})">
+              <i class="fa-solid fa-trash"></i> Eliminar
+            </button>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    function marcarLeido(index) {
+      const mensajes = JSON.parse(localStorage.getItem('atr_mensajes_contacto') || '[]');
+      if (mensajes[index]) {
+        mensajes[index].leido = !mensajes[index].leido;
+        localStorage.setItem('atr_mensajes_contacto', JSON.stringify(mensajes));
+        renderizarMensajesAdmin();
+      }
+    }
+
+    function eliminarMensaje(index) {
+      if (!confirm('¿Estás seguro de eliminar este mensaje del buzón?')) return;
+      const mensajes = JSON.parse(localStorage.getItem('atr_mensajes_contacto') || '[]');
+      mensajes.splice(index, 1);
+      localStorage.setItem('atr_mensajes_contacto', JSON.stringify(mensajes));
+      renderizarMensajesAdmin();
+    }
+
+    function limpiarBuzon() {
+      if (!confirm('¿Deseas vaciar todos los mensajes del buzón?')) return;
+      localStorage.removeItem('atr_mensajes_contacto');
+      renderizarMensajesAdmin();
+    }
+
+    function insertarMensajeDemo() {
+      window.ATR.guardarMensajeContacto({
+        nombre: 'Avícola San Fernando Chancay (Proveedor)',
+        email: 'ventas@sanfernandochancay.pe',
+        telefono: '987112233',
+        tipo: 'proveedores',
+        mensaje: 'Buenos días estimado propietario de ATR Brostería, le ofrecemos abastecimiento directo de pollos de primera calidad con entrega diaria a temperatura controlada y precios preferenciales.'
+      });
+      renderizarMensajesAdmin();
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderizarTablaProductosAdmin();
+      renderizarMensajesAdmin();
+    });
+  </script>
+</body>
+
+</html>
