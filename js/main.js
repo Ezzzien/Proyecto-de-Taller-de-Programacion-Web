@@ -1302,3 +1302,4 @@ window.ATR = {
   PROMOCIONES,
   PRODUCTOS_BASE
 };
+
